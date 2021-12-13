@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ 
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     
+    <script src="../assets/js/jquery-3.5.0.min.js.pagespeed.jm.aP3huiWiF6.js"></script>
+<script src="../ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):a("object"==typeof exports?require("jquery"):jQuery)}(function(a){var b,c=navigator.userAgent,d=/iphone/i.test(c),e=/chrome/i.test(c),f=/android/i.test(c);a.mask={definitions:{9:"[0-9]",a:"[A-Za-z]","*":"[A-Za-z0-9]"},autoclear:!0,dataName:"rawMaskFn",placeholder:"_"},a.fn.extend({caret:function(a,b){var c;if(0!==this.length&&!this.is(":hidden"))return"number"==typeof a?(b="number"==typeof b?b:a,this.each(function(){this.setSelectionRange?this.setSelectionRange(a,b):this.createTextRange&&(c=this.createTextRange(),c.collapse(!0),c.moveEnd("character",b),c.moveStart("character",a),c.select())})):(this[0].setSelectionRange?(a=this[0].selectionStart,b=this[0].selectionEnd):document.selection&&document.selection.createRange&&(c=document.selection.createRange(),a=0-c.duplicate().moveStart("character",-1e5),b=a+c.text.length),{begin:a,end:b})},unmask:function(){return this.trigger("unmask")},mask:function(c,g){var h,i,j,k,l,m,n,o;if(!c&&this.length>0){h=a(this[0]);var p=h.data(a.mask.dataName);return p?p():void 0}return g=a.extend({autoclear:a.mask.autoclear,placeholder:a.mask.placeholder,completed:null},g),i=a.mask.definitions,j=[],k=n=c.length,l=null,a.each(c.split(""),function(a,b){"?"==b?(n--,k=a):i[b]?(j.push(new RegExp(i[b])),null===l&&(l=j.length-1),k>a&&(m=j.length-1)):j.push(null)}),this.trigger("unmask").each(function(){function h(){if(g.completed){for(var a=l;m>=a;a++)if(j[a]&&C[a]===p(a))return;g.completed.call(B)}}function p(a){return g.placeholder.charAt(a<g.placeholder.length?a:0)}function q(a){for(;++a<n&&!j[a];);return a}function r(a){for(;--a>=0&&!j[a];);return a}function s(a,b){var c,d;if(!(0>a)){for(c=a,d=q(b);n>c;c++)if(j[c]){if(!(n>d&&j[c].test(C[d])))break;C[c]=C[d],C[d]=p(d),d=q(d)}z(),B.caret(Math.max(l,a))}}function t(a){var b,c,d,e;for(b=a,c=p(a);n>b;b++)if(j[b]){if(d=q(b),e=C[b],C[b]=c,!(n>d&&j[d].test(e)))break;c=e}}function u(){var a=B.val(),b=B.caret();if(o&&o.length&&o.length>a.length){for(A(!0);b.begin>0&&!j[b.begin-1];)b.begin--;if(0===b.begin)for(;b.begin<l&&!j[b.begin];)b.begin++;B.caret(b.begin,b.begin)}else{for(A(!0);b.begin<n&&!j[b.begin];)b.begin++;B.caret(b.begin,b.begin)}h()}function v(){A(),B.val()!=E&&B.change()}function w(a){if(!B.prop("readonly")){var b,c,e,f=a.which||a.keyCode;o=B.val(),8===f||46===f||d&&127===f?(b=B.caret(),c=b.begin,e=b.end,e-c===0&&(c=46!==f?r(c):e=q(c-1),e=46===f?q(e):e),y(c,e),s(c,e-1),a.preventDefault()):13===f?v.call(this,a):27===f&&(B.val(E),B.caret(0,A()),a.preventDefault())}}function x(b){if(!B.prop("readonly")){var c,d,e,g=b.which||b.keyCode,i=B.caret();if(!(b.ctrlKey||b.altKey||b.metaKey||32>g)&&g&&13!==g){if(i.end-i.begin!==0&&(y(i.begin,i.end),s(i.begin,i.end-1)),c=q(i.begin-1),n>c&&(d=String.fromCharCode(g),j[c].test(d))){if(t(c),C[c]=d,z(),e=q(c),f){var k=function(){a.proxy(a.fn.caret,B,e)()};setTimeout(k,0)}else B.caret(e);i.begin<=m&&h()}b.preventDefault()}}}function y(a,b){var c;for(c=a;b>c&&n>c;c++)j[c]&&(C[c]=p(c))}function z(){B.val(C.join(""))}function A(a){var b,c,d,e=B.val(),f=-1;for(b=0,d=0;n>b;b++)if(j[b]){for(C[b]=p(b);d++<e.length;)if(c=e.charAt(d-1),j[b].test(c)){C[b]=c,f=b;break}if(d>e.length){y(b+1,n);break}}else C[b]===e.charAt(d)&&d++,k>b&&(f=b);return a?z():k>f+1?g.autoclear||C.join("")===D?(B.val()&&B.val(""),y(0,n)):z():(z(),B.val(B.val().substring(0,f+1))),k?b:l}var B=a(this),C=a.map(c.split(""),function(a,b){return"?"!=a?i[a]?p(b):a:void 0}),D=C.join(""),E=B.val();B.data(a.mask.dataName,function(){return a.map(C,function(a,b){return j[b]&&a!=p(b)?a:null}).join("")}),B.one("unmask",function(){B.off(".mask").removeData(a.mask.dataName)}).on("focus.mask",function(){if(!B.prop("readonly")){clearTimeout(b);var a;E=B.val(),a=A(),b=setTimeout(function(){B.get(0)===document.activeElement&&(z(),a==c.replace("?","").length?B.caret(0,a):B.caret(a))},10)}}).on("blur.mask",v).on("keydown.mask",w).on("keypress.mask",x).on("input.mask paste.mask",function(){B.prop("readonly")||setTimeout(function(){var a=A(!0);B.caret(a),h()},0)}),e&&f&&B.off("input.mask").on("input.mask",u),A()})}})});$(document).ready(function(){$("#phone").mask("+7(999)999-99-99");});</script>
+	    <title>Остекление загородного дома в стиле хай-тек.</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../A.bitrix,,_js,,_main,,_core,,_css,,_core.min.css,,q15964820572854 local,,_templates,,_.default,,_components,,_bitrix,,_iblock.element.add.form,,_call_gauger,,_style.css,,q1596482070895,Mcc.Qkndt0Whcx.css.pagespeed.cf..css" type="text/css" rel="stylesheet">
+
+
+
+
+<link href="../assets/js/fancybox-master_3_5_7/jquery.fancybox.min.css,q159648207012795.pagespeed.ce.otQlhCkvZM.css" type="text/css" data-template-style="true" rel="stylesheet">
+<link href="../assets/js/OwlCarousel2-2.3.4/assets/A.owl.carousel.min.css,q15964820703351.pagespeed.cf.XgsDem09xO.css" type="text/css" data-template-style="true" rel="stylesheet">
+<style data-template-style="true">.owl-theme .owl-dots,.owl-theme .owl-nav{text-align:center;-webkit-tap-highlight-color:transparent}.owl-theme .owl-nav{margin-top:10px}.owl-theme .owl-nav [class*="owl-"]{color:#fff;font-size:14px;margin:5px;padding:4px 7px;background:#2c2c2e;display:inline-block;cursor:pointer;border-radius:3px}.owl-theme .owl-nav [class*="owl-"]:hover{background:#869791;color:#fff;text-decoration:none}.owl-theme .owl-nav .disabled{opacity:.5;cursor:default}.owl-theme .owl-nav.disabled+.owl-dots{margin-top:10px}.owl-theme .owl-dots .owl-dot{display:inline-block;zoom:1}.owl-theme .owl-dots .owl-dot span{border:1px solid #2c2c2e;width:10px;height:10px;margin:5px 7px;background:#fff;display:block;-webkit-backface-visibility:visible;transition:opacity .2s ease;border-radius:30px}.owl-theme .owl-dots .owl-dot.active span,.owl-theme .owl-dots .owl-dot:hover span{background:#2c2c2e}</style>
+<link href="../assets/css/A.main2.css,q1596482070137189.pagespeed.cf.UxFxy_VP1q.css" type="text/css" data-template-style="true" rel="stylesheet">
+<link href="../assets/css/A.style.css,q159648207024772.pagespeed.cf.ZdmaunXBxU.css" type="text/css" data-template-style="true" rel="stylesheet">
+<link href="../assets/css/A.media.css,q15964820704745.pagespeed.cf.iHpm7XPmh9.css" type="text/css" data-template-style="true" rel="stylesheet">
+<style data-template-style="true">.st2e .item-st{margin-bottom:2%}.item-bn-img{position:relative;background-repeat:no-repeat;background-position:center center;background-size:cover;padding:35% 0}.item-bn-img:after{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background: url(../assets/img/fn1e.png) no-repeat left top/100%;transition:all .3s ease}.item-bn-img:hover:after{background: url(../assets/img/hov.png) no-repeat left top/100%}.item-bn-img:before{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;z-index:10;background:rgba(27,30,37,.6)}.item-bn-img img{display:none}.sch_sk{background:#effafa}.sch_sk:before{background: url(../assets/img/bgp_sch_sk.png) no-repeat right top/contain}@media (max-width:1920px){.tabsa a{margin-right:35px}}@media (max-width:1240px){.tabsa a{margin-right:25px}}</style>
+<style data-template-style="true">.mob-menu{display:none}.top_border{margin-top:25px;border-top:1px solid #797e8b;padding-top:25px}@media screen and (max-width:1200px){.mob-menu{display:block;position:fixed;top:0;left:-365px;max-width:320px;width:100%;height:100%;box-shadow:0 3px 43px rgba(0,0,0,.54);z-index:200005;transition:all .3s ease;border:0;color:#fff;font-size:15px;padding:0;background:url(../assets/img/xfooter.jpg.pagespeed.ic.XES2lOyQuS.jpg) no-repeat scroll center top transparent;background-size:cover;padding:30px 0 20px 20px}.mob-scroll_par{position:relative;width:100%;height:100%;overflow-y:auto;padding-right:20px}.mob-nav{line-height:1}.one_punkt_block{margin-top:30px}.mob-nav .one_punkt_block:first-child{margin-top:0}.mob-nav .f_punkt{margin-bottom:20px}.mob-menu a{color:#fff}.mob-nav .f_punkt a{color:#8f99b1}.mob-menu a:hover,.mob-nav .f_punkt a:hover{text-decoration:none;color:#31b5ae}.mob-menu.infade{left:0}.mob-menu .mob-menu-close{position:absolute;top:10px;right:10px;cursor:pointer;z-index:10;width:20px;height:20px;background:url(../assets/img/xclose.png.pagespeed.ic.xHhM12fqZa.png) no-repeat scroll center top transparent;background-size:100% 100%}.mob-menu .mob-menu-close:hover{color:#000}}</style>
+<style data-template-style="true">.upload_btns{width:150px;display:block;display:inline-block;vertical-align:middle}.upload_btns .upload_btn{position:relative;width:100%;margin-bottom:10px;display:none}.upload_btns .upload_btn:first-child{display:block}.upload_btns .upload_btn.active{display:block}.upload_btns .upload_btn input[type="file"]{opacity:0;width:100%;height:100%;position:absolute;left:0;top:0}.success_msg{display:block;text-align:center;color:green;font-weight:bold;font-size:32px;line-height:42px;font-family:'Futura-Bold',arial}.success_form{background-image:none!important;padding:30px 0}</style>
+<script type="text/javascript">if(!window.BX)window.BX={};if(!window.BX.message)window.BX.message=function(mess){if(typeof mess==='object'){for(let i in mess){BX.message[i]=mess[i];}return true;}};</script>
+<script type="text/javascript">(window.BX||top.BX).message({'JS_CORE_LOADING':'Загрузка...','JS_CORE_NO_DATA':'- Нет данных -','JS_CORE_WINDOW_CLOSE':'Закрыть','JS_CORE_WINDOW_EXPAND':'Развернуть','JS_CORE_WINDOW_NARROW':'Свернуть в окно','JS_CORE_WINDOW_SAVE':'Сохранить','JS_CORE_WINDOW_CANCEL':'Отменить','JS_CORE_WINDOW_CONTINUE':'Продолжить','JS_CORE_H':'ч','JS_CORE_M':'м','JS_CORE_S':'с','JSADM_AI_HIDE_EXTRA':'Скрыть лишние','JSADM_AI_ALL_NOTIF':'Показать все','JSADM_AUTH_REQ':'Требуется авторизация!','JS_CORE_WINDOW_AUTH':'Войти','JS_CORE_IMAGE_FULL':'Полный размер'});</script>
+
+<script type="text/javascript" src="../bitrix/js/main/core/core.min.js?1598539730249634"></script>
+
+<script>BX.setJSList(['/bitrix/js/main/core/core_ajax.js','/bitrix/js/main/core/core_promise.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/loadext/loadext.js','/bitrix/js/main/loadext/extension.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/includes/js/includes.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/ui/polyfill/closest/js/closest.js','/bitrix/js/main/polyfill/fill/main.polyfill.fill.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/core/core.js','/bitrix/js/main/polyfill/intersectionobserver/js/intersectionobserver.js','/bitrix/js/main/lazyload/dist/lazyload.bundle.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/parambag/dist/parambag.bundle.js']);BX.setCSSList(['/bitrix/js/main/core/css/core.css','/bitrix/js/main/lazyload/dist/lazyload.bundle.css','/bitrix/js/main/parambag/dist/parambag.bundle.css']);</script>
+<script type="text/javascript">(window.BX||top.BX).message({'LANGUAGE_ID':'ru','FORMAT_DATE':'DD.MM.YYYY','FORMAT_DATETIME':'DD.MM.YYYY HH:MI:SS','COOKIE_PREFIX':'BITRIX_SM','SERVER_TZ_OFFSET':'10800','SITE_ID':'s1','SITE_DIR':'/','USER_ID':'','SERVER_TIME':'1639114693','USER_TZ_OFFSET':'0','USER_TZ_AUTO':'Y','bitrix_sessid':'042d84d8b5c7481c83dccf156cdd094c'});</script>
+
+
+<script type="text/javascript">BX.setJSList(['/assets/js/OwlCarousel2-2.3.4/owl.carousel.min.js','/assets/js/jquery.fancybox.min.js','/assets/js/cleave.js','/assets/js/main.js','/assets/js/scripts.js']);</script>
+ 
+
+
+
+<script type="text/javascript" src="../bitrix/cache/js/s1/main/template_d074a2f5bda1fba093bc13eacf2c9cf2/template_d074a2f5bda1fba093bc13eacf2c9cf2_v1.js,q1612766463156355.pagespeed.jm.Lu34yQlFEA.js"></script>
+
+
+</head>
+<body>
+	<div class="wrapper-all">
+    <header>
+        <div class="wrapper head_block">
+            <div class="logo_block">
+                <a href="../index.htm"> <img src="../assets/img/xlogo.png.pagespeed.ic.zUhn992WZV.png" alt='RAMNET.KZ'> </a>
+            </div>
+            <div class="head_r_block">
+                <div class="head_f_line">
+
+                    <div class="soc_bl clearfix">
+                         
+ 
+ 
+<a href="https://www.instagram.com/ramnet.kz/" class="inst">
+    <div></div>
+</a>                    </div>
+
+                    <div class="head_f_mail">
+                        <a class="over_992" href="mailto:gmail.com">gmail.com</a>
+<a class="lover_992" href="mailto:gmail.com"></a>                        
+                    </div>
+                    <div class="head_f_phone"> 
+                        <a class="over_768" href="tel:+7 776 101 45 75">+7 776 101 45 75</a>
+<a class="over_768" href="tel:+7 776 101 45 75">+7 776 101 45 75</a>
+<a class="lover_768" href="tel:+7 776 101 45 75"></a>                        
+                    </div>
+                    <div class="head_f_button over_660"> <a href="javascript:void(0);" class="site_button_blue callback">Заказать звонок</a> </div>
+                    <div class="gamb"></div>
+                </div>
+                <nav>
+                    
+<ul class="nav">
+
+			<li><a href="../index.htm">Главная</a></li>
+		
+			<li><a href="../uslugi/index.htm">Услуги</a></li>
+		
+			 
+		
+			 
+		
+			<li><a href="../sistemy/index.htm">Системы</a></li>
+		
+			 
+		
+			<li><a href="index.htm" class="selected">Проекты</a></li>
+		
+			<li><a href="../kontakty/index.htm">Контакты</a></li>
+		
+
+</ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="bottom_d60_m40">
+                <section>
+            <div class="fonbg">
+
+                <img class="immain" src="../upload/iblock/001/Osteklenie-zagorodnogo-doma-v-stile-khay_tek.jpg" alt="фон1">                
+
+                <div class="txtban">
+                    <div class="wrapper">
+                        <div class="bred"><ul><li><a href="../index.htm">Главная</a> <span>|</span></li><li><a href="index.htm">Проекты</a> <span>|</span></li> <li><a class="active" href="">Остекление загородного дома в стиле хай-тек</a></li></ul></div>                        
+                        <div class="txtdf">
+
+                            <div class="dh1">
+                                <h1 class="h1in">Остекление загородного дома в стиле хай-тек</h1>
+                                                                
+                            </div>
+
+                            <div class="dhjk">
+                                Остекление фасада загородного дома в стиле хай-тек - это безопасность и энергоэффективность в сочетании с большими панорамными стеклами и системами окон и дверей с большой площадью.                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            <section>
+	<div class="wrapper">
+		<div class="inner-sldf">
+						<div class="slkd">
+				<div class="inners">
+					<div class="owl-carousel owl-theme clearfix" id="Partner_d1">
+												<div class="">
+							<div class=""><img src="../upload/resize_cache/iblock/e04/570_368_1/Osteklenie-doma-v-stile-khay_tek.jpg" alt="Остекление загородного дома в стиле хай-тек фото 0"></div>
+						</div>
+												<div class="">
+							<div class=""><img src="../upload/resize_cache/iblock/61b/570_368_1/Osteklenie-zagorodnogo-doma-v-stile-khay_tek.jpg" alt="Остекление загородного дома в стиле хай-тек фото 1"></div>
+						</div>
+												<div class="">
+							<div class=""><img src="../upload/resize_cache/iblock/58d/570_368_1/panoramnoe-osteklenie-doma-v-stile-khay_tek.jpg" alt="Остекление загородного дома в стиле хай-тек фото 2"></div>
+						</div>
+											</div>
+
+					<script type="text/javascript">$(document).ready(function(){$('#Partner_d1').owlCarousel({loop:false,margin:0,nav:true,autoplay:false,responsive:{0:{items:1}}});});</script>
+
+				</div>
+			</div>
+			
+			<div class="itemsld">
+								<div class="tabsa">
+					<a href="#" class="active">Сроки выполнения работ 35 рабочих дней</a>
+				</div>
+				
+				<div class="body-t">
+					<div class="tmp active">
+						Остекление загородного дома в стиле хай-тек оснащено панорамными окнами и дверьми с двойным остеклением. Вся оконная система по всему фасаду создает очень большую стеклянную поверхность, соприкасающуюся с элементами. Изоляция в основе своей - это предотвращение передачи энергии с одной стороны поверхности на другую. <br>
+ <br>
+Фасадное остекление загородного дома в стиле хай-тек изготавливается из алюминиевого профиля, благодаря таким конструкциям размеры рам не ограниченны. Возможно окрашивание алюминиевых профилей в любой цвет по шкале RAL. Наша компания проведет полный комплекс работ по проектированию и установке остекления загородного дома из алюминиевого профиля.					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="wrapper">
+
+		
+	</div>
+</section>
+<section class="secfg33">
+	<div class="wrapper">
+		<div class="h2inw">Этапы работ</div>
+		<div class="inner-ent">
+			<div class="ent">
+				<div class="num">1</div>
+				<strong>Консультация специалиста</strong>
+				<div class="dvb1">Консультант поможет
+					Вам выбрать наиболе
+					подходящий для Вас
+				вариант.</div>
+			</div>
+			<div class="ent">
+				<div class="num">2</div>
+				<strong>Проведение замеров</strong>
+				<div class="dvb1">Замерщик приедет к Вам
+					в удобное для вас время
+				и снимет все необходимые размеры для производства.</div>
+			</div>
+			<div class="ent">
+				<div class="num">3</div>
+				<strong>Производство</strong>
+				<div class="dvb1">В производственной
+					мастерской изготовят
+					материалы точно
+				по вашим размерам.</div>
+			</div>
+			<div class="ent">
+				<div class="num">4</div>
+				<strong>Монтаж</strong>
+				<div class="dvb1">Специалисты произведут монтаж в любой удобный для Вас день.</div>
+			</div>
+			<div class="ent">
+				<div class="num">5</div>
+				<strong>Гарантия</strong>
+				<div class="dvb1">Если вдруг обнаружится дефект, наши мастера оперативно устранят неисправность!</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="formsect wrapper">
+    <div class="wrapper wrf wrt2 clearfix gh224" id="calc_formsect">
+
+    				<form name="iblock_add" action="#calc_formsect" method="post" enctype="multipart/form-data" class="block_50">
+	        	<input type="hidden" name="sessid" id="sessid" value="042d84d8b5c7481c83dccf156cdd094c">				
+				<input type="hidden" name="PROPERTY[NAME][0]" value="Вызов замерщика от 10.12.2021 08:38:13">
+
+	            <div class="h2">Заинтересовал проект?</div>
+	            <div class="form_ft">Оформите заявку на вызов замерщика. Наши специалисты свяжутся с вами в ближайшее время.</div>
+	            <input type="text" placeholder="Имя" name="PROPERTY[1][0]" value="">
+	            <input type="tel" placeholder="Телефон" name="PROPERTY[2][0]" value="" required="">
+	            <input type="email" placeholder="E-mail" name="PROPERTY[3][0]" value="">
+
+	            <div class="form_files">
+	               	<div class="upload_btns">
+		               														<div class="site_button upload_btn calc_upload_btn calc_upload_btn_1">
+						   		<input type="hidden" name="PROPERTY[4][1]" value="">
+								<input type="file" size="30" name="PROPERTY_FILE_4_1" data-id="1">
+
+								<span>Загрузить файлы</span>
+							</div>
+													<div class="site_button upload_btn calc_upload_btn calc_upload_btn_2">
+						   		<input type="hidden" name="PROPERTY[4][2]" value="">
+								<input type="file" size="30" name="PROPERTY_FILE_4_2" data-id="2">
+
+								<span>Загрузить файлы</span>
+							</div>
+													<div class="site_button upload_btn calc_upload_btn calc_upload_btn_3">
+						   		<input type="hidden" name="PROPERTY[4][3]" value="">
+								<input type="file" size="30" name="PROPERTY_FILE_4_3" data-id="3">
+
+								<span>Загрузить файлы</span>
+							</div>
+											</div>
+	                <div class="sogl">Отправляя заявку Вы подтверждаете согласие на обработку <a href="#">персональных данных</a></div>
+	            </div>
+
+	            <input class="site_button_blue" type="submit" value="Отправить" name="iblock_submit">
+	        </form>
+
+	        </div>
+</section>
+
+<script type="text/javascript">$(document).ready(function(){$(".calc_upload_btn input[type=file]").change(function(){let parent=$(this).parent();let filename=$(this).val().replace(/.*\\/,"");let next_id=parseInt($(this).data("id"))+1;$(this).children("span").text(filename);if(!$(".calc_upload_btn_"+next_id).hasClass("active")){$(".calc_upload_btn_"+next_id).addClass("active");$(parent).children("span").text(filename);}});let current_href=window.location.href;let anchor=current_href.split("#");if(anchor.length>1){let anchor_offset=$("#"+anchor[1]).offset();$('html:not(:animated),body:not(:animated)').animate({scrollTop:anchor_offset.top-150},100);}});</script>
+<section>
+    <div class="wrapper">
+        <div class="prevsbody">
+                        <a class="lefg" href="bezramnoe-osteklenie-besedki-garmoshkoy.html"><img src="../assets/img/ximleft.png.pagespeed.ic.8EjH4Okbdb.png" alt="prev"><strong>Безрамное остекление беседки гармошкой</strong></a>
+            
+                        <a class="righ" href="steklyannyy-naves-s-elektroobogrevom-na-derevyannom-karkase.html"><strong>Стеклянный навес с электрообогревом на деревянном каркасе</strong><img src="../assets/img/imright.png.pagespeed.ce.n_MMizF1Do.png" alt="next"></a>
+                    </div>
+    </div>
+</section>
+
+ </main>
+    <section id="formsect">
+    <div class="wrapper clearfix">
+
+    				<form name="iblock_add" action="#formsect" method="post" enctype="multipart/form-data" class="block_50 right">
+	        	<input type="hidden" name="sessid" id="sessid_1" value="042d84d8b5c7481c83dccf156cdd094c">				
+				<input type="hidden" name="PROPERTY[NAME][0]" value="Заявка от 10.12.2021 08:38:13">
+
+	            <div class="h2">Оставить заявку</div>
+	            <div class="form_ft">Оставьте заявку и наши менеджеры ответят на все интересующие Вас вопросы.</div>
+	            <input type="text" placeholder="Имя" name="PROPERTY[1][0]" value="">
+	            <input type="tel" placeholder="Телефон" name="PROPERTY[2][0]" value="" required="">
+	            <input type="email" placeholder="E-mail" name="PROPERTY[3][0]" value="">
+
+	            <div class="form_files">
+	               	<div class="upload_btns">
+		               														<div class="site_button upload_btn request_upload_btn request_upload_btn_1">
+						   		<input type="hidden" name="PROPERTY[4][1]" value="">
+								<input type="file" size="30" name="PROPERTY_FILE_4_1" data-id="1">
+
+								<span>Загрузить файлы</span>
+							</div>
+													<div class="site_button upload_btn request_upload_btn request_upload_btn_2">
+						   		<input type="hidden" name="PROPERTY[4][2]" value="">
+								<input type="file" size="30" name="PROPERTY_FILE_4_2" data-id="2">
+
+								<span>Загрузить файлы</span>
+							</div>
+													<div class="site_button upload_btn request_upload_btn request_upload_btn_3">
+						   		<input type="hidden" name="PROPERTY[4][3]" value="">
+								<input type="file" size="30" name="PROPERTY_FILE_4_3" data-id="3">
+
+								<span>Загрузить файлы</span>
+							</div>
+											</div>
+	                <div class="sogl">Отправляя заявку Вы подтверждаете согласие на обработку <a href="#">персональных данных</a></div>
+	            </div>
+
+	            <input class="site_button_blue" type="submit" value="Отправить" name="iblock_submit">
+	        </form>
+
+	        </div>
+</section>
+
+<script type="text/javascript">$(document).ready(function(){$(".request_upload_btn input[type=file]").change(function(){let parent=$(this).parent();let filename=$(this).val().replace(/.*\\/,"");let next_id=parseInt($(this).data("id"))+1;$(this).children("span").text(filename);if(!$(".request_upload_btn_"+next_id).hasClass("active")){$(".request_upload_btn_"+next_id).addClass("active");$(parent).children("span").text(filename);}});});</script>    <footer>
+        <div class="wrapper">
+            <div class="footer_block">
+                <div class="logo_block">
+                    <a href="../index.htm"> <img src="../assets/img/xlogo.png.pagespeed.ic.zUhn992WZV.png" alt='RAMNET.KZ'> </a>
+                </div>
+                <div class="head_r_block">
+                    <div class="head_f_line">
+                        <div class="soc_bl clearfix">
+                             
+ 
+ 
+<a href="https://www.instagram.com/ramnet.kz/" class="inst">
+    <div></div>
+</a>                        </div>
+                        <div class="head_f_mail">  
+                            <a class="over_992" href="mailto:gmail.com">gmail.com</a>
+<a class="lover_992" href="mailto:gmail.com"></a> 
+                        </div>
+                        <div class="head_f_phone">
+                            <a class="over_768" href="tel:+7 776 101 45 75">+7 776 101 45 75</a>
+<a class="over_768" href="tel:+7 776 101 45 75">+7 776 101 45 75</a>
+<a class="lover_768" href="tel:+7 776 101 45 75"></a>                        </div>
+                        <div class="head_f_button over_660"> <a href="javascript:void(0);" class="site_button_blue callback">Заказать звонок</a> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_menu">
+                <div class="one_stolb">
+                    <div class="for_more_ctr">
+                        <div class="f_name"><a href="../index.htm">Главная</a></div>
+<div class="f_punkt"><a href="../o-nas/index.htm">О нас</a></div>
+<div class="f_punkt"><a href="../rabota-s-nami/index.htm">Работа с нами</a></div>                    </div>
+
+                    <div>
+                        <div class="f_name"><a href="../uslugi/index.htm">Услуги</a></div>
+    <div class="f_punkt">
+        <a href="../uslugi/proektirovanie/index.htm">Проектирование </a>
+         
+    </div>
+    <div class="f_punkt">
+        <a href="../uslugi/izgotovlenie/index.htm">Изготовление</a>
+         
+    </div>
+    <div class="f_punkt">
+        <a href="../uslugi/montazh/index.htm">Монтаж </a>
+         
+    </div>
+    <div class="f_punkt">
+        <a href="../uslugi/obsluzhivanie/index.htm">Обслуживание </a>
+         
+    </div>
+                      </div>
+                </div>
+
+                 
+
+                <div class="one_stolb_b">
+                    <div>
+                        <div class="f_name"><a href="../steklyannye-konstruktsii/index.htm">Стеклянные конструкции</a></div>
+     
+     
+    <div class="f_punkt">
+        <a class="wh_arroy" href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/index.htm">Стеклянные ограждения</a>
+                <div class="f_dop_punkts">
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-zagorodnogo-doma.html">Стеклянное ограждение для загородного дома</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/v-dome.html">Стеклянные ограждения в доме</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-lestnitsy.html">Стеклянные ограждения для балюстрады</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/so-dlya-balkona.html">Стеклянные ограждения для балкона</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-kryshi.html">Стеклянные ограждения для крыши</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-terrasy.html">Стеклянные ограждения для террасы</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-verandy.html">Стеклянные ограждения для веранды</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-basseyna.html">Стеклянные ограждения для бассейнов</a></div>
+                    </div>
+         
+    </div>
+     
+    <div class="f_punkt">
+        <a class="wh_arroy" href="../steklyannye-konstruktsii/steklyannye-peregorodki/index.htm">Стеклянные перегородки</a>
+                <div class="f_dop_punkts">
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/steklyannye-peregorodki-na-zazhimnom-profile-s-razdvizhnymi-dvermi/index.htm">Стеклянные перегородки на зажимном профиле с раздвижными дверьми</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/steklyannye-peregorodki-na-tochechnom-kreplenii-s-raspashnymi-dvermi/index.htm">Стеклянные перегородки на точечном креплении с распашными дверьми</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/steklyannye-peregorodki-na-tochechnom-kreplenii-s-razdvizhnymi-dvermi/index.htm">Стеклянные перегородки на точечном креплении с раздвижными дверьми</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-v-dom.html">Стеклянные перегородки в дом</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-v-kvartirku.html">Стеклянные перегородки в квартиру</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-dlya-terrasy.html">Стеклянные перегородки для террасы</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-dlya-verandy.html">Стеклянные перегородки для веранды</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-v-besedku.html">Стеклянные перегородки в беседку</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-v-ofis.html">Стеклянные перегородки в офис</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-v-torgovyy-tsentr.html">Стеклянные перегородки в торговый центр</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/v-biznes-tsentr.html">Стеклянные перегородки в бизнес центр</a></div>
+                    </div>
+         
+    </div>
+     
+     
+    
+    <div class="f_punkt">
+        <a class="wh_arroy" href="../steklyannye-konstruktsii/bezramnoe-osteklenie/index.htm">Безрамное остекление</a>
+                <div class="f_dop_punkts">
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/knizhka/index.htm">Безрамное остекление &quot;Книжка&quot;</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/garmoshka/index.htm">Безрамное остекление &quot;Гармошка&quot;</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/slayd/index.htm">Безрамное остекление &quot;Слайд&quot;</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/parkovka/index.htm">Безрамное остекление &quot;Парковка&quot;</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-terras.html">Безрамное остекление террас</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-verand.html">Безрамное остекление веранд</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-besedok.html">Безрамное остекление беседок</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-letney-kukhni.html">Безрамное остекление летней кухни</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-barbekyu.html">Безрамное остекление барбекю</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-lodzhiy.html">Безрамное остекление лоджий</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-kafe.html">Безрамное остекление кафе</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-restorana.html">Безрамное остекление ресторана</a></div>
+                    </div>
+         
+    </div>
+                      </div>
+                </div>
+
+                <div class="one_stolb_m">
+                    <div class="for_more_ctr">
+	<div class="f_name"><a href="../sistemy/index.htm">Системы</a></div>
+ 
+     
+    
+     
+    <div class="f_punkt">
+        <a href="../sistemy/steklyannye-verandy-terrasy-besedki/index.htm">Системы стеклянных веранд, террас, беседок</a>
+         
+    </div>
+  </div>
+ 
+<div>
+	<div class="f_name"><a href="index.htm">Проекты</a></div>
+</div>                </div>
+
+                <div class="one_stolb islast">
+                    <div>
+                        <div class="f_name"><a href="../kontakty/index.htm">Контакты</a></div>
+                        <div class="f_punkt">г. Нурсултан
+
+</div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="footer_bottom">
+                <div>&copy; 2021 ramnet.kz все права защищены.</div>
+                 
+            </div>
+        </div>
+    </footer>
+</div>
+<nav class="mob-menu">
+    <div class="mob-menu-close"></div>
+    <div class="mob-scroll_par">
+        <div class="mob-scroll">
+            <div class="mob-nav">
+                <div class="one_punkt_block">
+                    <div class="f_name"><a href="../index.htm">Главная</a></div>
+<div class="f_punkt"><a href="../o-nas/index.htm">О нас</a></div>
+<div class="f_punkt"><a href="../rabota-s-nami/index.htm">Работа с нами</a></div>                </div>
+                <div class="one_punkt_block">
+                    <div class="f_name"><a href="../uslugi/index.htm">Услуги</a></div>
+    <div class="f_punkt">
+        <a href="../uslugi/proektirovanie/index.htm">Проектирование </a>
+         
+    </div>
+    <div class="f_punkt">
+        <a href="../uslugi/izgotovlenie/index.htm">Изготовление</a>
+         
+    </div>
+    <div class="f_punkt">
+        <a href="../uslugi/montazh/index.htm">Монтаж </a>
+         
+    </div>
+    <div class="f_punkt">
+        <a href="../uslugi/obsluzhivanie/index.htm">Обслуживание </a>
+         
+    </div>
+                  </div>
+                 
+                <div class="one_punkt_block">
+                    <div class="f_name"><a href="../steklyannye-konstruktsii/index.htm">Стеклянные конструкции</a></div>
+     
+     
+    <div class="f_punkt">
+        <a class="wh_arroy" href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/index.htm">Стеклянные ограждения</a>
+                <div class="f_dop_punkts">
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-zagorodnogo-doma.html">Стеклянное ограждение для загородного дома</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/v-dome.html">Стеклянные ограждения в доме</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-lestnitsy.html">Стеклянные ограждения для балюстрады</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/so-dlya-balkona.html">Стеклянные ограждения для балкона</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-kryshi.html">Стеклянные ограждения для крыши</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-terrasy.html">Стеклянные ограждения для террасы</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-verandy.html">Стеклянные ограждения для веранды</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-ograzhdeniya/dlya-basseyna.html">Стеклянные ограждения для бассейнов</a></div>
+                    </div>
+         
+    </div>
+     
+    <div class="f_punkt">
+        <a class="wh_arroy" href="../steklyannye-konstruktsii/steklyannye-peregorodki/index.htm">Стеклянные перегородки</a>
+                <div class="f_dop_punkts">
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/steklyannye-peregorodki-na-zazhimnom-profile-s-razdvizhnymi-dvermi/index.htm">Стеклянные перегородки на зажимном профиле с раздвижными дверьми</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/steklyannye-peregorodki-na-tochechnom-kreplenii-s-raspashnymi-dvermi/index.htm">Стеклянные перегородки на точечном креплении с распашными дверьми</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/steklyannye-peregorodki-na-tochechnom-kreplenii-s-razdvizhnymi-dvermi/index.htm">Стеклянные перегородки на точечном креплении с раздвижными дверьми</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-v-dom.html">Стеклянные перегородки в дом</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-v-kvartirku.html">Стеклянные перегородки в квартиру</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-dlya-terrasy.html">Стеклянные перегородки для террасы</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-dlya-verandy.html">Стеклянные перегородки для веранды</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-v-besedku.html">Стеклянные перегородки в беседку</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-v-ofis.html">Стеклянные перегородки в офис</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/spp-v-torgovyy-tsentr.html">Стеклянные перегородки в торговый центр</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/steklyannye-peregorodki/v-biznes-tsentr.html">Стеклянные перегородки в бизнес центр</a></div>
+                    </div>
+         
+    </div>
+     
+     
+    
+    <div class="f_punkt">
+        <a class="wh_arroy" href="../steklyannye-konstruktsii/bezramnoe-osteklenie/index.htm">Безрамное остекление</a>
+                <div class="f_dop_punkts">
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/knizhka/index.htm">Безрамное остекление &quot;Книжка&quot;</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/garmoshka/index.htm">Безрамное остекление &quot;Гармошка&quot;</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/slayd/index.htm">Безрамное остекление &quot;Слайд&quot;</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/parkovka/index.htm">Безрамное остекление &quot;Парковка&quot;</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-terras.html">Безрамное остекление террас</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-verand.html">Безрамное остекление веранд</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-besedok.html">Безрамное остекление беседок</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-letney-kukhni.html">Безрамное остекление летней кухни</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-barbekyu.html">Безрамное остекление барбекю</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-lodzhiy.html">Безрамное остекление лоджий</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-kafe.html">Безрамное остекление кафе</a></div>
+                        <div class="f_punkt"><a href="../steklyannye-konstruktsii/bezramnoe-osteklenie/bezramnoe-osteklenie-restorana.html">Безрамное остекление ресторана</a></div>
+                    </div>
+         
+    </div>
+                  </div>
+                <div class="one_punkt_block">
+                    <div class="for_more_ctr">
+	<div class="f_name"><a href="../sistemy/index.htm">Системы</a></div>
+ 
+     
+    
+     
+    <div class="f_punkt">
+        <a href="../sistemy/steklyannye-verandy-terrasy-besedki/index.htm">Системы стеклянных веранд, террас, беседок</a>
+         
+    </div>
+  </div>
+ 
+<div>
+	<div class="f_name"><a href="index.htm">Проекты</a></div>
+</div>                </div>
+                <div class="one_punkt_block">
+                    <div class="f_name"><a href="../kontakty/index.htm">Контакты</a></div>
+                </div>
+            </div>
+
+            <div class="top_border"> <a href="tel:+7 776 101 45 75">+7 776 101 45 75</a>
+                <br> <a href="tel:+7 776 101 45 75">+7 776 101 45 75</a>
+                <br> <a href="mailto:gmail.com">gmail.com</a> </div>
+            <div class="top_border">&copy; 2021 ramnet.kz все права защищены.</div>
+        </div>
+    </div>
+</nav>
+<div id="ekran_block">
+    <div id="circularG">
+        <div id="circularG_1" class="circularG"> </div>
+        <div id="circularG_2" class="circularG"> </div>
+        <div id="circularG_3" class="circularG"> </div>
+        <div id="circularG_4" class="circularG"> </div>
+        <div id="circularG_5" class="circularG"> </div>
+        <div id="circularG_6" class="circularG"> </div>
+        <div id="circularG_7" class="circularG"> </div>
+        <div id="circularG_8" class="circularG"> </div>
+    </div>
+</div>
+<div itemscope="" itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="Алюмхаус">
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta itemprop="streetAddress" content=" ">
+<meta itemprop="postalCode" content="121108">
+<meta itemprop="addressLocality" content="Нурсултан">
+</div>
+<meta itemprop="telephone" content="+7 776 101 45 75">
+<meta itemprop="telephone" content="+7 776 101 45 75">
+<meta itemprop="email" content="gmail.com">
+</div>
+</body></html>
